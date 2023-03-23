@@ -1,4 +1,6 @@
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
@@ -22,7 +24,16 @@ void update()	 {
     super.update();
 }
 
+void draw(Graphics g) {
 
+if (gotImage) {
+	g.drawImage(image, x, y, width, height, null);
+} else {
+	g.setColor(Color.BLUE);
+	g.fillRect(x, y, width, height);
+}
+
+}
 
 void loadImage(String imageFile) {
     if (needImage) {
@@ -34,5 +45,17 @@ void loadImage(String imageFile) {
         }
         needImage = false;
     }
+}
+
+
+public static void add(zombie zombie) {
+	// TODO Auto-generated method stub
+	
+}
+
+
+public static Object get(int i) {
+	// TODO Auto-generated method stub
+	return null;
 }
 }

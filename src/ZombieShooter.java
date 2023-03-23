@@ -1,4 +1,4 @@
- 
+
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class SpaceShooter implements KeyListener {
+public class ZombieShooter implements KeyListener {
 	public static BufferedImage image;
 	public static boolean needImage = true;
 	public static boolean gotImage = false;	
@@ -21,8 +21,8 @@ public class SpaceShooter implements KeyListener {
 	JLabel label   = new JLabel();
 	
 	public static void main(String[] args) {
-		SpaceShooter spaceShooter = new SpaceShooter();
-		spaceShooter.setup();
+		ZombieShooter zombieshooter = new ZombieShooter();
+		zombieshooter.setup();
 		
 	}
 	
@@ -37,31 +37,12 @@ public class SpaceShooter implements KeyListener {
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		    loadImage ("Grass.png");
+		   
 		}
-	
-	
 
 
 
 
-	 
-
-
-	void loadImage(String imageFile) {
-	    if (needImage) {
-	        try {
-	            image = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
-		    gotImage = true;
-	        } catch (Exception e) {
-	            
-	        }
-	        needImage = false;
-	    }
-	}
-
-
-	
 
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -88,6 +69,6 @@ public class SpaceShooter implements KeyListener {
 		// TODO Auto-generated method stub
 		
 	}
-		
-
 }
+	
+	

@@ -6,7 +6,7 @@ import java.util.Random;
 public class ObjectManager {
 	Peashooter peashooter;
 	Random rand = new Random();
-	ArrayList<zombie> aliens = new ArrayList<zombie>();
+	ArrayList<zombie> zombie = new ArrayList<zombie>();
 	ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 	int score = 0;
 
@@ -24,7 +24,7 @@ public class ObjectManager {
 			}
 		}
 
-		for (int i = 0; i < aliens.size(); i++) {
+		for (int i = 0; i < zombie.size(); i++) {
 			if (zombie.get(i).active == false) {
 				zombie.remove(zombie.get(i));
 			}
@@ -45,10 +45,10 @@ public class ObjectManager {
 		
 		if (peashooter.active == true) {
 
-			for (int i = 0; i < aliens.size(); i++) {
-				aliens.get(i).update();
-				if (aliens.get(i).y > ZombieShooter.HEIGHT) {
-					aliens.get(i).active = false;
+			for (int i = 0; i < zombie.size(); i++) {
+				zombie.get(i).update();
+				if (zombie.get(i).y > ZombieShooter.HEIGHT) {
+					zombie.get(i).active = false;
 				}
 			}
 			for (int i = 0; i < projectiles.size(); i++) {
@@ -64,8 +64,8 @@ public class ObjectManager {
 
 	void draw(Graphics g) {
 		peashooter.draw(g);
-		for (int i = 0; i < aliens.size(); i++) {
-			aliens.get(i).draw(g);
+		for (int i = 0; i < zombie.size(); i++) {
+			zombie.get(i).draw(g);
 		}
 		for (int i = 0; i < projectiles.size(); i++) {
 			Projectile.get(i).draw(g);
@@ -73,18 +73,18 @@ public class ObjectManager {
 	}
 
 	void checkCollision() {
-		for (int i = 0; i < aliens.size(); i++) {
-			if (peashooter.collisionBox.intersects(aliens.get(i).collisionBox) == true) {
+		for (int i = 0; i < zombie.size(); i++) {
+			if (peashooter.collisionBox.intersects(zombie.get(i).collisionBox) == true) {
 				peashooter.active = false;
 				zombie.get(i).active = false;
 			}
 			
 		}
-		for (int i = 0; i < aliens.size(); i++) {
+		for (int i = 0; i < zombie.size(); i++) {
 			for(int i2=0; i2 < projectiles.size(); i2++) {
-			if (projectiles.get(i2).collisionBox.intersects(aliens.get(i).collisionBox) == true) {
+			if (projectiles.get(i2).collisionBox.intersects(zombie.get(i).collisionBox) == true) {
 				projectiles.get(i2).active = false;
-				aliens.get(i).active = false;
+				zombie.get(i).active = false;
 				score+=1;
 				}
 		}

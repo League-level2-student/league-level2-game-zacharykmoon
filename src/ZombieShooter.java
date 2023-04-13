@@ -1,7 +1,6 @@
 
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+ 
 import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
@@ -10,31 +9,40 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class ZombieShooter implements KeyListener {
-	public static BufferedImage image;
-	public static boolean needImage = true;
-	public static boolean gotImage = false;	
+public class ZombieShooter {
+	 
 	static final int WIDTH = 500;
 	static final int HEIGHT = 500;
-	JFrame frame = new JFrame();
- JPanel panel = new JPanel();
-	JLabel label   = new JLabel();
+	JFrame frame;
+GamePanel panel;
+
 	
 	public static void main(String[] args) {
 		ZombieShooter zombieshooter = new ZombieShooter();
 		zombieshooter.setup();
 		
 	}
+	ZombieShooter() {
+		frame = new JFrame();
+		frame.setVisible(true);
+		panel = new GamePanel();
+		frame.add(panel);
+		frame.addKeyListener(panel);
+		
+	}
+		 
+		
+
+
 	
+
 
 	 
 
 
 	public  void setup(){
-			frame.setVisible(true);
-		frame.add(panel);
-		frame.addKeyListener(this);
-		frame.setLocationRelativeTo(null);
+	 
+		frame.setSize(WIDTH, HEIGHT);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		   
@@ -43,32 +51,7 @@ public class ZombieShooter implements KeyListener {
 
 
 
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 }
+
 	
 	

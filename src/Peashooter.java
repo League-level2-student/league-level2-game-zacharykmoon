@@ -16,7 +16,7 @@ public class Peashooter extends GameObject{
 		super(x, y, width, height);
 		// TODO Auto-generated constructor stub 
 		if (needImage) {
-		    loadImage ("rocket.png");
+		    loadImage ("Peashooter.png");
 		}
 		
 	}

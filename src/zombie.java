@@ -58,4 +58,10 @@ public static Object get(int i) {
 	// TODO Auto-generated method stub
 	return null;
 }
+
+
+public static void remove(Object object) {
+	// TODO Auto-generated method stub
+	
+}
 }

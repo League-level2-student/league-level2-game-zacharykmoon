@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 
+
+@SuppressWarnings("serial")
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public static BufferedImage image;
 	public static boolean needImage = true;
@@ -35,10 +37,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		frameDraw.start();
 	
 		if (needImage) {
-		    loadImage ("Night.png");
+		    loadImage("Grasslawn.png");
 		}
 	}
-	
+	    
 		int currentState = MENU;
 	
 		void startGame() {

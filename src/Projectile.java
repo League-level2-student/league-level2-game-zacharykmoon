@@ -16,7 +16,7 @@ Projectile(int x, int y, int width, int height) {
 }
  
 void update() {
-	y-=10;
+	y-= speed;
     super.update();
 
 }
@@ -31,6 +31,7 @@ void loadImage(String imageFile) {
         needImage = false;
     }
 }
+
 
 public static ObjectManager get(int i) {
 	// TODO Auto-generated method stub

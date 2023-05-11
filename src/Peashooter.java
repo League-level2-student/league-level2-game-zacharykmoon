@@ -16,9 +16,9 @@ public class Peashooter extends GameObject{
 		super(x, y, width, height);
 		// TODO Auto-generated constructor stub 
 		if (needImage) {
-		    loadImage ("Peashooter.png");
+		    loadImage ("peashooter.png");
 		}
-		
+		speed = 30;
 	}
 void draw(Graphics g) { 
 	if (gotImage) {
@@ -56,5 +56,7 @@ void loadImage(String imageFile) {
 }
 public Projectile getProjectile() {
 	return new Projectile(x+width/2, y, 10, 10);
+	
+	
 }
 }

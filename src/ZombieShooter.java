@@ -1,6 +1,8 @@
 
 
  
+import java.awt.Window;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
@@ -42,9 +44,13 @@ GamePanel panel;
 
 	public  void setup(){
 	 
+		frame.setVisible(true);
 		frame.setSize(WIDTH, HEIGHT);
+		frame.add(panel);
+		frame.addKeyListener(panel);
+
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		   
 		}
 

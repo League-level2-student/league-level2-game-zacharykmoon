@@ -16,32 +16,40 @@ import javax.swing.Timer;
 
 
 
-@SuppressWarnings("serial")
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
+	
 	public static BufferedImage image;
 	public static boolean needImage = true;
-	public static boolean gotImage = false;	
+	public static boolean gotImage = false;
 	final int MENU = 0;
-	Peashooter peashooter = new Peashooter(250, 750 , 50, 50);
+	Peashooter peashooter = new Peashooter(100, 100, 70, 70);
+	int currentState = MENU;
 	ObjectManager objectManager= new ObjectManager(peashooter);
 	final int GAME = 1;
 	final int END = 2;
 	Font titleFont;
 	Font gameFont;
 	Font gameInstructions;
-	Timer frameDraw;
+
 	Timer zombieSpawn;
 
+	Timer frameDraw;
+
 	GamePanel (){
+		titleFont = new Font("Arial", Font.PLAIN, 48);
+		gameFont = new Font("Arial", Font.PLAIN, 10);
+		gameInstructions = new Font("Arial", Font.PLAIN, 28);
+		// frameDraw = new Timer(1000/60, this);
+		frameDraw = new Timer(1000 / 60, this);
 		frameDraw = new Timer(1000/6,this);
 		frameDraw.start();
 	
 		if (needImage) {
-		    loadImage("Grasslawn.png");
+		    loadImage("grass.png");
 		}
 	}
 	    
-		int currentState = MENU;
+	
 	
 		void startGame() {
 		    zombieSpawn = new Timer(1000/6,this);
@@ -140,6 +148,14 @@ peashooter = new Peashooter(250, 750, 50, 50);
 		if(e.getKeyCode()==KeyEvent.VK_DOWN) {
 			System.out.println("DOWN");
 			peashooter.down();
+		}	 
+			if(e.getKeyCode()==KeyEvent.VK_LEFT) {
+				System.out.println("LEFT");
+				peashooter.left();
+		}
+			if(e.getKeyCode()==KeyEvent.VK_RIGHT) {
+				System.out.println("RIGHT");
+				peashooter.right();
 		}
 		if(peashooter.x>450) {
 			peashooter.x=450;

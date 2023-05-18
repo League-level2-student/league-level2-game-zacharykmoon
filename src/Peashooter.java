@@ -20,7 +20,7 @@ public class Peashooter extends GameObject{
 		}
 		speed = 30;
 	}
-void draw(Graphics g) { 
+public void draw(Graphics g) { 
 	if (gotImage) {
 		g.drawImage(image, x, y, width, height, null);
 	} else {

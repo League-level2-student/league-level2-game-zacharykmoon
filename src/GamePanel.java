@@ -24,7 +24,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	final int MENU = 0;
 	Peashooter peashooter = new Peashooter(100, 100, 70, 70);
 	int currentState = MENU;
-	ObjectManager objectManager= new ObjectManager(peashooter);
+	ObjectManager Manager= new ObjectManager(peashooter);
 	final int GAME = 1;
 	final int END = 2;
 	Font titleFont;
@@ -59,7 +59,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 		void updateMenuState() {}
 		void updateGameState() {
-			objectManager.update();
+			Manager.update();
 			if(peashooter.active==false) {
 				currentState=END;
 			}
@@ -74,7 +74,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 				g.fillRect(0, 0, ZombieShooter.WIDTH, ZombieShooter.HEIGHT);
 			}
 			
-			objectManager.draw(g);
+			Manager.draw(g);
 			
 			//System.out.println("Rocket");
 			
@@ -94,7 +94,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			g.setColor(Color.YELLOW);
 			g.setFont(titleFont);
 			g.drawString("Game Over", 150, 250);
-			g.drawString("You kill "+ objectManager.getScore() +" many enimies", 50, 300);
+			g.drawString("You kill "+ Manager.getScore() +" many enimies", 50, 300);
 			g.drawString("Press ENTER to restart", 50, 400);
 		}
 		
@@ -118,7 +118,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 				if(currentState == END) {
 					zombieSpawn.stop();
 peashooter = new Peashooter(250, 750, 50, 50);
-					objectManager = new ObjectManager(peashooter);
+					Manager = new ObjectManager(peashooter);
 					currentState = MENU;
 					}
 				else {
@@ -136,7 +136,7 @@ peashooter = new Peashooter(250, 750, 50, 50);
 		
 		if(e.getKeyCode()==KeyEvent.VK_SPACE) {
 			if(currentState == GAME) {
-			objectManager.addProjectile(peashooter.getProjectile());	
+			Manager.addProjectile(peashooter.getProjectile());	
 		}
 		}
 		if(e.getKeyCode()==KeyEvent.VK_UP) {

@@ -1,4 +1,5 @@
 
+import java.awt.Graphics;
 import java.awt.Rectangle;
 
 public class GameObject {
@@ -23,6 +24,13 @@ public class GameObject {
 	
 	void update(){
 		  collisionBox.setBounds(x, y, width, height);
+	}
+
+
+
+	public void draw(Graphics g) {
+		// TODO Auto-generated method stub
+		
 	}
 		
 	

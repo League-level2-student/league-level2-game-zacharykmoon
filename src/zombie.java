@@ -24,7 +24,7 @@ void update()	 {
     super.update();
 }
 
-void draw(Graphics g) {
+public void draw(Graphics g) {
 
 if (gotImage) {
 	g.drawImage(image, x, y, width, height, null);
@@ -63,5 +63,11 @@ public static Object get(int i) {
 public static void remove(Object object) {
 	// TODO Auto-generated method stub
 	
+}
+
+
+public static int size() {
+	// TODO Auto-generated method stub
+	return 0;
 }
 }

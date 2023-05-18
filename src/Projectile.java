@@ -1,3 +1,5 @@
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
@@ -16,8 +18,17 @@ Projectile(int x, int y, int width, int height) {
 }
  
 void update() {
-	y-= speed;
+	
     super.update();
+    y-= speed;
+}
+public void draw(Graphics g) { 
+	if (gotImage) {
+		g.drawImage(image, x, y, width, height, null);
+	} else {
+		g.setColor(Color.BLUE);  
+		g.fillRect(x, y, width, height);
+	}
 
 }
 void loadImage(String imageFile) {

@@ -6,9 +6,10 @@ import java.util.Random;
 public class ObjectManager {
 	Peashooter peashooter;
 	Random rand = new Random();
-	ArrayList<zombie> zombie = new ArrayList<zombie>();
+	ArrayList<zombie> zombies = new ArrayList<zombie>();
 	ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 	int score = 0;
+	Random ran = new Random();
 
 	ObjectManager(Peashooter peashooter) {
 		this.peashooter = peashooter;
@@ -16,19 +17,56 @@ public class ObjectManager {
 	int getScore() {
 		return score;
 	}
+	void addZombie() {
+		zombie.add(new zombie(ran.nextInt(ZombieShooter.WIDTH), 0, 50, 50));
+
+	}
+	void update() {
+		peashooter.update();
+		for (int i = 0; i < zombie.size(); i++) {
+zombie brain = zombies.get(i);
+			brain.update();
+			if (brain.y >= ZombieShooter.HEIGHT) {
+				brain.active = false;
+
+			}
+
+		}
+	
+	for (int i = 0; i < projectiles.size(); i++) {
+		Projectile proSkillz = projectiles.get(i);
+		proSkillz.update();
+		if (proSkillz.y <= 0) {
+			proSkillz.active = false;
+		}
+
+	}
+	}
 	
 	void purgeObjects() {
-		for (int i = 0; i < projectiles.size(); i++) {
-			if (projectiles.get(i).active == false) {
-				projectiles.remove(projectiles.get(i));
+		for (int i = 0; i < zombies.size(); i++) {
+			zombie brain = zombies.get(i);
+
+			if (brain.y >= ZombieShooter.HEIGHT) {
+				brain.active = false;
+
+			}
+			if (brain.active == false) {
+				zombies.remove(i);
 			}
 		}
 
-		for (int i = 0; i < zombie.size(); i++) {
-			if (zombie.get(i).active == false) {
-				zombie.remove(zombie.get(i));
+		for (int i = 0; i < projectiles.size(); i++) {
+			Projectile proSkillz = projectiles.get(i);
+			if (proSkillz.y <= 0) {
+				proSkillz.active = false;
 			}
+			if (proSkillz.active == false) {
+				projectiles.remove(i);
+			}
+
 		}
+		// Projectile
 	}
 
 	void addzombie() {
@@ -39,56 +77,41 @@ public class ObjectManager {
 		projectiles.add(projectile);
 	}
 
-	void update() {
-		
-		peashooter.update();
-		
-		if (peashooter.active == true) {
-
-			for (int i = 0; i < zombie.size(); i++) {
-				zombie.get(i).update();
-				if (zombie.get(i).y > ZombieShooter.HEIGHT) {
-					zombie.get(i).active = false;
-				}
-			}
-			for (int i = 0; i < projectiles.size(); i++) {
-				projectiles.get(i).update();
-				if (projectiles.get(i).y < 0) {
-					projectiles.get(i).active = false;
-				}
-			}
-			checkCollision();
-			purgeObjects();
-		}
-	}
+	
 
 	void draw(Graphics g) {
 		peashooter.draw(g);
 		for (int i = 0; i < zombie.size(); i++) {
-			zombie.get(i).draw(g);
+			zombies.get(i).draw(g);
 		}
 		for (int i = 0; i < projectiles.size(); i++) {
-			Projectile.get(i).draw(g);
+			projectiles.get(i).draw(g);
 		}
 	}
-
 	void checkCollision() {
-		for (int i = 0; i < zombie.size(); i++) {
-			if (peashooter.collisionBox.intersects(zombie.get(i).collisionBox) == true) {
-				peashooter.active = false;
-				zombie.get(i).active = false;
-			}
+		for (zombie zombie : zombies) {
 			
-		}
-		for (int i = 0; i < zombie.size(); i++) {
-			for(int i2=0; i2 < projectiles.size(); i2++) {
-			if (projectiles.get(i2).collisionBox.intersects(zombie.get(i).collisionBox) == true) {
-				projectiles.get(i2).active = false;
-				zombie.get(i).active = false;
-				score+=1;
+
+			if (zombie.collisionBox.intersects(zombie.collisionBox)) {
+				zombie.active = false;
+				System.out.println("ship has died =(");
+				break;
+					
+			}
+			for (Projectile proSkillz : projectiles) {
+			
+
+				if (proSkillz.collisionBox.intersects(zombie.collisionBox)) {
+					zombie.active = (false);
+					proSkillz.active=(false);
+					score += 1;
 				}
+
+			}
 		}
-		}
+
+	
+		
 	}
 
 	public void actionPerformed(ActionEvent arg0) {

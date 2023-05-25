@@ -1,3 +1,4 @@
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -22,9 +23,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public static boolean needImage = true;
 	public static boolean gotImage = false;
 	final int MENU = 0;
-	Peashooter peashooter = new Peashooter(100, 100, 70, 70);
+	
 	int currentState = MENU;
-	ObjectManager Manager= new ObjectManager(peashooter);
+	ObjectManager Manager= new ObjectManager();
 	final int GAME = 1;
 	final int END = 2;
 	Font titleFont;
@@ -34,7 +35,24 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Timer zombieSpawn;
 
 	Timer frameDraw;
-
+	void updateMenuState() {}
+	void updateGameState() {
+		Manager.update();
+		if(peashooter.active==false) {
+			currentState=END;
+		}
+	}
+	void loadImage(String imageFile) {
+	    if (needImage) {
+	        try {
+	            image = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
+		    gotImage = true;
+	        } catch (Exception e) {
+	            
+	        }
+	        needImage = false;
+	    }
+	}
 	GamePanel (){
 		titleFont = new Font("Arial", Font.PLAIN, 48);
 		gameFont = new Font("Arial", Font.PLAIN, 10);
@@ -52,18 +70,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	
 	
 		void startGame() {
-		    zombieSpawn = new Timer(1000/6,this);
+		    zombieSpawn = new Timer(1000/6, this);
 		    zombieSpawn.start();
 		}
 
-
-		void updateMenuState() {}
-		void updateGameState() {
-			Manager.update();
-			if(peashooter.active==false) {
-				currentState=END;
-			}
-		}
+void endGame() {
+	zombieSpawn.stop();
+}
+		
 		
 		void updateEndState() {}
 		void drawGameState(Graphics g) {
@@ -98,17 +112,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			g.drawString("Press ENTER to restart", 50, 400);
 		}
 		
-		void loadImage(String imageFile) {
-		    if (needImage) {
-		        try {
-		            image = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
-			    gotImage = true;
-		        } catch (Exception e) {
-		            
-		        }
-		        needImage = false;
-		    }
-		}
+
+
 		
 		@Override
 		public void keyPressed(KeyEvent e) {
@@ -135,9 +140,9 @@ peashooter = new Peashooter(250, 750, 50, 50);
 		}
 		
 		if(e.getKeyCode()==KeyEvent.VK_SPACE) {
-			if(currentState == GAME) {
+			
 			Manager.addProjectile(peashooter.getProjectile());	
-		}
+		
 		}
 		if(e.getKeyCode()==KeyEvent.VK_UP) {
 			System.out.println("UP");

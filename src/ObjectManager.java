@@ -11,8 +11,8 @@ public class ObjectManager {
 	int score = 0;
 	Random ran = new Random();
 
-	ObjectManager(Peashooter peashooter) {
-		this.peashooter = peashooter;
+	ObjectManager() {
+		peashooter   = new peashooter();
 	}
 	int getScore() {
 		return score;
@@ -69,25 +69,29 @@ zombie brain = zombies.get(i);
 		// Projectile
 	}
 
-	void addzombie() {
-		zombie.add(new zombie(rand.nextInt(ZombieShooter.WIDTH), 0, 100, 100));
-	}
+	
 
-	void addProjectile(Projectile projectile) {
-		projectiles.add(projectile);
+	void addProjectile(Projectile chip) {
+		projectiles.add(chip);
 	}
 
 	
 
 	void draw(Graphics g) {
 		peashooter.draw(g);
-		for (int i = 0; i < zombie.size(); i++) {
-			zombies.get(i).draw(g);
-		}
 		for (int i = 0; i < projectiles.size(); i++) {
-			projectiles.get(i).draw(g);
+			Projectile proSkillz = projectiles.get(i);
+			proSkillz.draw(g);
+			if (proSkillz.y <= 0) {
+				proSkillz.active = false;
+
+			}
 		}
+			
+		
 	}
+	
+	
 	void checkCollision() {
 		for (zombie zombie : zombies) {
 			
@@ -116,6 +120,6 @@ zombie brain = zombies.get(i);
 
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		addzombie();
+		addZombie();
 	}
 }

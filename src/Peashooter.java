@@ -9,9 +9,7 @@ public class Peashooter extends GameObject{
 	public static BufferedImage image;
 	public static boolean needImage = true;
 	public static boolean gotImage = false;	
-	public static BufferedImage image1;
-	public static boolean needImage1 = true;
-	public static boolean gotImage1 = false;	
+	
 	Peashooter(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		// TODO Auto-generated constructor stub 

@@ -6,13 +6,14 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
 public class zombie extends GameObject {
+	int speed =1;
 	public static BufferedImage image;
 	public static boolean needImage = true;
 	public static boolean gotImage = false;	
 	zombie(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		// TODO Auto-generated constructor stub
-	this.speed =1;
+
 	if (needImage) {
 	    loadImage ("zombie.png");
 	} 
@@ -20,7 +21,7 @@ public class zombie extends GameObject {
   
 
 void update()	 {
-	y+=1;
+	y+=speed;
     super.update();
 }
 

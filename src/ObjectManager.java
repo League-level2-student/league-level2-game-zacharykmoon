@@ -11,9 +11,11 @@ public class ObjectManager {
 	int score = 0;
 	Random ran = new Random();
 
-	ObjectManager() {
-		peashooter   = new peashooter();
-	}
+	ObjectManager() { 
+		 
+		peashooter   = new Peashooter(50,50,50,50);
+	   
+		}
 	int getScore() {
 		return score;
 	}
@@ -23,11 +25,10 @@ public class ObjectManager {
 	}
 	void update() {
 		peashooter.update();
-		for (int i = 0; i < zombie.size(); i++) {
-zombie brain = zombies.get(i);
-			brain.update();
-			if (brain.y >= ZombieShooter.HEIGHT) {
-				brain.active = false;
+		for (int i = 0; i < zombie.size(); i++) {zombie zombie = zombies.get(i);
+			zombie.update();
+			if (zombie.y >= ZombieShooter.HEIGHT) {
+				zombie.active = false;
 
 			}
 

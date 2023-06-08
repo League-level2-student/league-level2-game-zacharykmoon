@@ -19,13 +19,14 @@ import javax.swing.Timer;
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	
+	private static final long serialVersionUID = 1L;
 	public static BufferedImage image;
 	public static boolean needImage = true;
 	public static boolean gotImage = false;
 	final int MENU = 0;
 	
 	int currentState = MENU;
-	ObjectManager Manager= new ObjectManager();
+	ObjectManager manager= new ObjectManager();
 	final int GAME = 1;
 	final int END = 2;
 	Font titleFont;
@@ -37,8 +38,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Timer frameDraw;
 	void updateMenuState() {}
 	void updateGameState() {
-		Manager.update();
-		if(peashooter.active==false) {
+		manager.update();
+		if(manager.peashooter.active==false) {
 			currentState=END;
 		}
 	}
@@ -88,7 +89,7 @@ void endGame() {
 				g.fillRect(0, 0, ZombieShooter.WIDTH, ZombieShooter.HEIGHT);
 			}
 			
-			Manager.draw(g);
+			manager.draw(g);
 			
 			//System.out.println("Rocket");
 			
@@ -108,7 +109,7 @@ void endGame() {
 			g.setColor(Color.YELLOW);
 			g.setFont(titleFont);
 			g.drawString("Game Over", 150, 250);
-			g.drawString("You kill "+ Manager.getScore() +" many enimies", 50, 300);
+			g.drawString("You kill "+ manager.getScore() +" many enimies", 50, 300);
 			g.drawString("Press ENTER to restart", 50, 400);
 		}
 		
@@ -122,8 +123,8 @@ void endGame() {
 			if(e.getKeyCode()==KeyEvent.VK_ENTER) {
 				if(currentState == END) {
 					zombieSpawn.stop();
-peashooter = new Peashooter(250, 750, 50, 50);
-					Manager = new ObjectManager(peashooter);
+manager.peashooter = new Peashooter(250, 750, 50, 50);
+					manager = new ObjectManager();
 					currentState = MENU;
 					}
 				else {
@@ -141,38 +142,38 @@ peashooter = new Peashooter(250, 750, 50, 50);
 		
 		if(e.getKeyCode()==KeyEvent.VK_SPACE) {
 			
-			Manager.addProjectile(peashooter.getProjectile());	
+			manager.addProjectile(manager.peashooter.getProjectile());	
 		
 		}
 		if(e.getKeyCode()==KeyEvent.VK_UP) {
 			System.out.println("UP");
-			peashooter.up();
+			manager.peashooter.up();
 		}
 		 
 		 
 		if(e.getKeyCode()==KeyEvent.VK_DOWN) {
 			System.out.println("DOWN");
-			peashooter.down();
+			manager.peashooter.down();
 		}	 
 			if(e.getKeyCode()==KeyEvent.VK_LEFT) {
 				System.out.println("LEFT");
-				peashooter.left();
+				manager.peashooter.left();
 		}
 			if(e.getKeyCode()==KeyEvent.VK_RIGHT) {
 				System.out.println("RIGHT");
-				peashooter.right();
+				manager.peashooter.right();
 		}
-		if(peashooter.x>450) {
-			peashooter.x=450;
+		if(manager.peashooter.x>450) {
+			manager.peashooter.x=450;
 		}
-		if(peashooter.x<0) {
-peashooter.x=0; 
+		if(manager.peashooter.x<0) {
+manager.peashooter.x=0; 
 		}
-		if(peashooter.y>750) {
-			peashooter.y=750;
+		if(manager.peashooter.y>750) {
+			manager.peashooter.y=750;
 		}
-		if(peashooter.y<0) {
-peashooter.y=800;
+		if(manager.peashooter.y<0) {
+manager.peashooter.y=800;
 		}
 	}
 		@Override

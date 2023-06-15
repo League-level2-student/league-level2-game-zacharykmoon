@@ -52,9 +52,25 @@ void loadImage(String imageFile) {
         needImage = false;
     }
 }
-public Projectile getProjectile() {
-	return new Projectile(x+width/2, y, 10, 10);
-	
+public static void stroke(int i, int j, int k) {
+	// TODO Auto-generated method stub
 	
 }
+public static void rect(int x, int y, int i, int j) {
+	// TODO Auto-generated method stub
+	
+}
+public static void fill(int i, int j, int k) {
+	// TODO Auto-generated method stub
+	
+}
+public static void move() {
+	// TODO Auto-generated method stub
+	
+}
+public static void size(int i, int j) {
+	// TODO Auto-generated method stub
+	
+}
+
 }

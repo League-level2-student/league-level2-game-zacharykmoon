@@ -1,4 +1,3 @@
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -83,10 +82,10 @@ void endGame() {
 		void updateEndState() {}
 		void drawGameState(Graphics g) {
 			if (gotImage) {
-				g.drawImage(image, ZombieShooter.WIDTH, ZombieShooter.HEIGHT, null);
+				g.drawImage(image, EatingPlant.WIDTH, EatingPlant.HEIGHT, null);
 			} else {
 				g.setColor(Color.BLACK);
-				g.fillRect(0, 0, ZombieShooter.WIDTH, ZombieShooter.HEIGHT);
+				g.fillRect(0, 0, EatingPlant.WIDTH,EatingPlant.HEIGHT);
 			}
 			
 			manager.draw(g);
@@ -96,7 +95,7 @@ void endGame() {
 		}
 		void drawMenuState(Graphics g) {
 			g.setColor(Color.BLUE);
-			g.fillRect(0, 0, ZombieShooter.WIDTH, ZombieShooter.HEIGHT);
+			g.fillRect(0, 0, EatingPlant.WIDTH, EatingPlant.HEIGHT);
 			g.setColor(Color.YELLOW);
 			g.setFont(titleFont);
 			g.drawString("Hello neighbor, use peashoooter to fight off the zombies", 150, 250);
@@ -105,7 +104,7 @@ void endGame() {
 		}
 		void drawEndState(Graphics g) {
 			g.setColor(Color.RED);
-			g.fillRect(0, 0, ZombieShooter.WIDTH, ZombieShooter.HEIGHT);
+			g.fillRect(0, 0, EatingPlant.WIDTH, EatingPlant.HEIGHT);
 			g.setColor(Color.YELLOW);
 			g.setFont(titleFont);
 			g.drawString("Game Over", 150, 250);
@@ -140,11 +139,8 @@ manager.peashooter = new Peashooter(250, 750, 50, 50);
 			JOptionPane.showMessageDialog(null, "Use WASD to move and press space to fire");
 		}
 		
-		if(e.getKeyCode()==KeyEvent.VK_SPACE) {
 			
-			manager.addProjectile(manager.peashooter.getProjectile());	
-		
-		}
+			
 		if(e.getKeyCode()==KeyEvent.VK_UP) {
 			System.out.println("UP");
 			manager.peashooter.up();
@@ -214,5 +210,4 @@ manager.peashooter.y=800;
 			
 		}
 }
-
 

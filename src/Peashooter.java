@@ -1,17 +1,19 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 
-import javax.imageio.ImageIO;
+
 
 public class Peashooter {
-	private int xCoor,  yCoor, width, height;, 
+	private int xCoor,  yCoor, width, height;
 	public Peashooter(int xCoor, int yCoor , int width,int height, int tileSize) {
 		this.xCoor = xCoor;
 		this.yCoor = yCoor;
 		width = tileSize;
 		height = tileSize;
+	}
+public Peashooter(int xCoor2, int yCoor2, int i) {
+		// TODO Auto-generated constructor stub
 	}
 public void tick() {
 	

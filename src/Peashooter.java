@@ -19,7 +19,7 @@ public void tick() {
 	
 }
 public void draw(Graphics g){
-	g.setColor(Color.YELLOW);
+	g.setColor(Color.GREEN);
 	g.fillRect(xCoor * width, yCoor* height,width,height);
 }
 

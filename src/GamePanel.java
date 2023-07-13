@@ -21,7 +21,8 @@ import javax.swing.Timer;
 
 
 public class GamePanel extends JPanel implements Runnable, KeyListener {
-private static final long serialVersionUID = 1L;
+ 
+	private static final long serialVersionUID = 1L;
 	public static final int WIDTH = 500, HEIGHT = 500;
 	private Thread thread;
 	private boolean running;
@@ -82,30 +83,55 @@ if(down) yCoor++;
 	 snake.remove(0);
 }
 }
+if(apples.size() ==0) {
+	int xCoor = r.nextInt(49);
+	int yCoor = r.nextInt(49);
+	apple = new Apple(xCoor, yCoor, 10);
+	apples.add(apple);
 }
 
+for(int i=0; i < apples.size() ; i++) {
+	
+	if(xCoor == apples.get(i).getxCoor()  && yCoor == apples.get(i).getyCoor()) {
+		size++;
+		apples.remove(i);
+		i++;
+	}
+ }      
+if(xCoor < 0 || xCoor > 49 || yCoor <  0 || yCoor> 49) {
+	System.out.println("Game Over");
+	stop();
+}
+}
 public void paint(Graphics g){
 	
 	g.clearRect(0, 0, WIDTH, HEIGHT);
+	g.setColor(Color.BLACK);
 	g.fillRect(0, 0, WIDTH, HEIGHT);
-g.setColor(Color.BLACK);
 
-for(int i=0; i<WIDTH/10 ; i++){
-	g.drawLine(i*10,0,i*10,HEIGHT);
+
+for(int i=0; i< WIDTH/10 ; i++){
+	g.drawLine(i*10,0 ,i*10,HEIGHT);
 }
-for(int i = 0;  i<HEIGHT/10; i++){
-	g.drawLine(0,i * 10, HEIGHT, i*10);
+for(int i = 0;  i< HEIGHT/10; i++){
+	g.drawLine(0, i * 10, HEIGHT, i*10);
 	
 }
 for(int i = 0; i < snake.size() ; i++) {
 	snake.get(i).draw(g);
+}
+for(int i = 0; i < apples.size() ; i++) {
+apples.get(i).draw(g);
 }
 }
 
 @Override
 public void run() {
 	// TODO Auto-generated method stub
-	
+	while(running) {
+		tick();
+		repaint();
+	}
 }
 
 @Override

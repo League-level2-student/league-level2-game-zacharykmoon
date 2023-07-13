@@ -9,15 +9,33 @@ public class Apple {
 			width = tileSize;
 			height = tileSize;
 		}
+	
 	public Apple(int xCoor2, int yCoor2, int i) {
 			// TODO Auto-generated constructor stub
 		}
+
 	public void tick() {
 		
 	}
 	public void draw(Graphics g){
 		g.setColor(Color.RED );
-		g.fillRect(xCoor * width, yCoor* height,width,height);
+		g.fillRect(xCoor * width, yCoor * height, width, height);
+	}
+
+	public int getxCoor() {
+		return xCoor;
+	}
+
+	public void setxCoor(int xCoor) {
+		this.xCoor = xCoor;
+	}
+
+	public int getyCoor() {
+		return yCoor;
+	}
+
+	public void setyCoor(int yCoor) {
+		this.yCoor = yCoor;
 	}
 
 }

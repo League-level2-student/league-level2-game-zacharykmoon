@@ -9,7 +9,8 @@ public class EatingPlant {
   
 	public EatingPlant() {
 		JFrame frame =  new JFrame();
-		
+		GamePanel gamepanel = new GamePanel();
+		frame.add(gamepanel);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("SNAKINGCODING");
 		frame.setLocationRelativeTo(null);

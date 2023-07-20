@@ -19,8 +19,8 @@ public void tick() {
 	
 }
 public void draw(Graphics g){
-	g.setColor(Color.GREEN);
-	g.fillRect(xCoor * width, yCoor* height,width,height);
+	g.setColor(Color.BLACK);
+	g.fillRect(xCoor * width, yCoor * height,width, height);
 }
 
 public int getxCoor() {
@@ -34,5 +34,8 @@ public int y() {
 }
 public void setyCoor(int yCoor) {
 	this.yCoor = yCoor;
+}
+public int getyCoor() {
+	return yCoor;
 }
 }

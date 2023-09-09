@@ -90,7 +90,7 @@ public class Game extends JFrame implements ComponentListener
 	static
 	{
 		// Generate seed to be print for the user
-		seed = (short) (new Random().nextInt(Short.MIN_VALUE, Short.MAX_VALUE) & 0xffff); // Using short to get a shorter
+		seed = (short) (new Random().nextInt(Short.MIN_VALUE) & 0xffff); // Using short to get a shorter
 																							// hex string
 		// seed = Integer.parseInt("40c9", 16);
 		random = new Random(seed);

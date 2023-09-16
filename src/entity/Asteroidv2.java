@@ -11,7 +11,6 @@ import java.util.Random;
 import asteroids.Game;
 import asteroids.GameUtils;
 import asteroids.NoiseGenerator;
-import util.FloodFill;
 
 public class Asteroidv2 extends Entity
 {

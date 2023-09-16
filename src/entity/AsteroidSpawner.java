@@ -41,10 +41,10 @@ public class AsteroidSpawner extends Entity
 	private boolean createAsteroidOldVersion()
 	{
 // 		Ancienne version
-		int radius = Game.getRandom().nextInt(25, 100);
+		int radius = Game.getRandom().nextInt(25);
 		int speed = 100 / radius;
 		int explodeCount = 3 * radius / 100;
-		float posX = Game.getRandom().nextFloat(radius, game.width() - radius);
+		float posX = Game.getRandom().nextFloat();
 		Asteroid a = new Asteroid(game, posX, -radius, radius, radius, speed, explodeCount);
 
 		for (Entity en : game.getEntitiesOf(Asteroidv2.class))
